@@ -1,0 +1,93 @@
+.bbc-empty-state {
+    
+}
+
+.selected-bar-character {
+    height: 50px;
+    display: flex;
+    border-top: 1px solid #000000;
+    background-color: white;
+}
+
+.selected-bar-character:last-child {
+    border-bottom: 1px solid #000000;
+}
+
+.character-image-container {
+    height: 100%;
+    overflow: hidden;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.character-image-container > img {
+    width: 130%;
+    transform: translateY(-25px) translateX(-20px);
+}
+
+.faction-container {
+    width: 25px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-shrink: 0;
+}
+
+.faction-container.blue {
+    background-color: rgb(19, 113, 151);
+}
+
+.faction-container.red {
+    background-color: rgb(173, 26, 54);
+}
+
+.faction-container.yellow {
+    background-color: rgb(233, 196, 60);
+}
+
+.faction-container.gray {
+    background-color: rgb(159, 159, 153);
+}
+
+.character-name-container {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.character-die {
+    font-size: 9px;
+    height: 18px;
+    width: 18px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.potential-elite-die {
+    cursor: pointer;
+}
+
+.active-elite-die {
+    cursor: pointer;
+}
+
+.character-removal-button {
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-left: 1px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgba(173, 26, 54, 0.15);
+}

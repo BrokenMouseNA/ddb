@@ -1,0 +1,8 @@
+.deck-builder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deck-builder-content {
+    width: calc(100% - 320px);
+}
