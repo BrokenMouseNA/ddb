@@ -83,6 +83,7 @@
     border-radius: 15px;
     overflow: hidden;
     height: 350px;
+    z-index: 5;
 }
 
 .item-full-art > img {

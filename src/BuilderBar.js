@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import BuilderBarCharacters from './BuilderBarCharacters.js';
+import BuilderBarUpgrades from './BuilderBarUpgrades.js';
+import BuilderBarEvents from './BuilderBarEvents.js';
+import BuilderBarSupports from './BuilderBarSupports.js';
 
 class BuilderBar extends Component {
     render() {
@@ -13,6 +16,18 @@ class BuilderBar extends Component {
                         selectedCharacters={this.props.selectedCharacters}
                         setEliteStatus={this.props.setEliteStatus}
                         removeSelectedCharacter={this.props.removeSelectedCharacter} />
+                    <BuilderBarUpgrades 
+                        selectedUpgrades={this.props.selectedUpgrades}
+                        addSelectedUpgrade={this.props.addSelectedUpgrade}
+                        removeSelectedUpgrade={this.props.removeSelectedUpgrade} />
+                    <BuilderBarEvents
+                        selectedEvents={this.props.selectedEvents}
+                        addSelectedEvent={this.props.addSelectedEvent}
+                        removeSelectedEvent={this.props.removeSelectedEvent} />
+                    <BuilderBarSupports
+                        selectedSupports={this.props.selectedSupports}
+                        addSelectedSupport={this.props.addSelectedSupport}
+                        removeSelectedSupport={this.props.removeSelectedSupport} />
                 </div>
             </div>
         )

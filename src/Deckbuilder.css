@@ -6,3 +6,12 @@
 .deck-builder-content {
     width: calc(100% - 320px);
 }
+
+.picker-list-container {
+    height: 500px;
+    overflow: scroll;
+}
+
+.hidden-list {
+    display: none;
+}

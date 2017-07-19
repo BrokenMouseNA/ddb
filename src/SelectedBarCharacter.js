@@ -39,7 +39,7 @@ class SelectedBarCharacter extends Component {
     }
 
     removeSelectedCharacter() {
-        this.props.removeSelectedCharacter(this.props.character.code);
+        this.props.removeSelectedCharacter(this.props.selectedIndex);
     }
 
     render() {

@@ -24,6 +24,7 @@ class BuilderBarCharacters extends Component {
                         return(
                             <SelectedBarCharacter
                                 key={index}
+                                selectedIndex={index}
                                 character={char}
                                 setEliteStatus={this.props.setEliteStatus}
                                 removeSelectedCharacter={this.props.removeSelectedCharacter} />

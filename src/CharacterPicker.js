@@ -6,6 +6,10 @@ class CharacterPicker extends Component {
     constructor(props) {
         super(props);
         this._addSelectedCharacter = this._addSelectedCharacter.bind(this);
+        this.toggleList = this.toggleList.bind(this);
+        this.state = {
+            showList: true
+        };
     }
 
     _addSelectedCharacter(character) {
@@ -45,14 +49,29 @@ class CharacterPicker extends Component {
         });
     }
 
+    toggleList() {
+        this.setState({showList: !this.state.showList})
+    }
+
+    listClasses() {
+        let baseClasses = ["character-picker-list-container", "picker-list-container"];
+        if(!this.state.showList || this.availableCharacters().length === 0) {
+            baseClasses.push("hidden-list")
+        }
+        return baseClasses.join(" ");
+    }
+
     render() {
         return(
             <div className="character-picker">
-                <SelectableList 
-                    items={this.sortedAvailableCharacters()}
-                    updateSelected={this._addSelectedCharacter}
-                    textFilter={""}
-                    availablePoints={this.availablePoints()} />
+                <h2 onClick={this.toggleList}>Characters</h2>
+                <div className={this.listClasses()}>
+                    <SelectableList 
+                        items={this.sortedAvailableCharacters()}
+                        updateSelected={this._addSelectedCharacter}
+                        textFilter={""}
+                        availablePoints={this.availablePoints()} />
+                </div>
             </div>
         )
     }

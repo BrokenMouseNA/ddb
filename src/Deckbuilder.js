@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import BuilderBar from './BuilderBar.js';
 import CharacterPicker from './CharacterPicker.js';
+import UpgradePicker from './UpgradePicker.js';
+import EventPicker from './EventPicker.js';
+import SupportPicker from './SupportPicker.js';
 
 class Deckbuilder extends Component {
     constructor(props) {
@@ -14,17 +17,26 @@ class Deckbuilder extends Component {
             factionRestricted: true,
             cards: {
                 characters: [],
+                events: [],
                 upgrades: [],
                 supports: [],
                 battlefields: []
             },
             selectedCharacters: [],
-            selectedDeckCards: [],
+            selectedUpgrades: [],
+            selectedEvents:[],
+            selectedSupports: [],
             selectedBattlefield: []
         }
         this.addSelectedCharacter = this.addSelectedCharacter.bind(this);
         this.removeSelectedCharacter = this.removeSelectedCharacter.bind(this);
         this.setEliteStatus = this.setEliteStatus.bind(this);
+        this.addSelectedUpgrade = this.addSelectedUpgrade.bind(this);
+        this.removeSelectedUpgrade = this.removeSelectedUpgrade.bind(this);
+        this.addSelectedEvent = this.addSelectedEvent.bind(this);
+        this.removeSelectedEvent = this.removeSelectedEvent.bind(this);
+        this.addSelectedSupport = this.addSelectedSupport.bind(this);
+        this.removeSelectedSupport = this.removeSelectedSupport.bind(this);
     }
 
     componentDidMount() {
@@ -80,6 +92,18 @@ class Deckbuilder extends Component {
         }
     }
 
+    determineFactions(selectedCharacters) {
+        if(selectedCharacters.length > 0) {
+            let currentFactions = selectedCharacters.reduce((factions, char) => {
+                if(factions.indexOf(char.faction_code) === -1) { factions.push(char.faction_code); }
+                return factions;
+            }, []);
+            this.setState({currentFactions});
+        } else {
+            this.setState({currentFactions: []})
+        }
+    }
+
     addSelectedCharacter(character) {
         let characterCopy = Object.assign({}, character);
         let selectedCharacters = this.state.selectedCharacters.map(char => {
@@ -88,14 +112,17 @@ class Deckbuilder extends Component {
         selectedCharacters.push(characterCopy);
         this.setState({selectedCharacters});
         if (this.state.affiliationRestricted) { this.determineAffiliation(selectedCharacters); }
+        if (this.state.factionRestricted) { this.determineFactions(selectedCharacters); }
     }
 
-    removeSelectedCharacter(characterCode) {
-        let selectedCharacters = this.state.selectedCharacters.filter(char => {
-            return char.code !== characterCode;
-        })
+    removeSelectedCharacter(characterIndex) {
+        let selectedCharacters = this.state.selectedCharacters.map(char => {
+            return Object.assign({}, char);
+        });
+        selectedCharacters.splice(characterIndex, 1);
         this.setState({selectedCharacters});
         if (this.state.affiliationRestricted) { this.determineAffiliation(selectedCharacters); }
+        if (this.state.factionRestricted) { this.determineFactions(selectedCharacters); }
     }
 
     setEliteStatus(characterCode, eliteStatus) {
@@ -109,6 +136,70 @@ class Deckbuilder extends Component {
         this.setState({selectedCharacters});
     }
 
+    addSelectedCard(addedCard, cardType) {
+        let selectedCardTypes = this.state[cardType].map(event => {
+            return Object.assign({}, event);
+        });
+        let matchingCard = selectedCardTypes.find(card => {
+            return card.code === addedCard.code;
+        });
+        let updateObject = {};
+        if(matchingCard && matchingCard.countInDeck !== 2) {
+            matchingCard.countInDeck = 2;
+            updateObject[cardType] = selectedCardTypes
+            this.setState(updateObject);
+        } else if(!matchingCard) {
+            let cardClone = Object.assign({}, addedCard);
+            cardClone.countInDeck = 1;
+            selectedCardTypes.push(cardClone);
+            updateObject[cardType] = selectedCardTypes
+            this.setState(updateObject);
+        }
+    }
+
+    removeSelectedCard(removedCard, cardType) {
+        let selectedCardTypes = this.state[cardType].map(card => {
+            return Object.assign({}, card);
+        });
+        let matchingCard = selectedCardTypes.find(card => {
+            return card.code === removedCard.code;
+        });
+        if(matchingCard && matchingCard.countInDeck === 2) {
+            matchingCard.countInDeck = 1;
+        } else if(matchingCard) {
+            selectedCardTypes = selectedCardTypes.filter(card => {
+                return card.code !== matchingCard.code;
+            });
+        }
+        let updateObject = {}
+        updateObject[cardType] = selectedCardTypes;
+        this.setState(updateObject);
+    }
+
+    addSelectedUpgrade(addedUpgrade) {
+        this.addSelectedCard(addedUpgrade, "selectedUpgrades")
+    }
+
+    removeSelectedUpgrade(removedUpgrade) {
+        this.removeSelectedCard(removedUpgrade, "selectedUpgrades");
+    }
+
+    addSelectedEvent(addedEvent) {
+        this.addSelectedCard(addedEvent, "selectedEvents");
+    }
+
+    removeSelectedEvent(removedEvent) {
+        this.removeSelectedCard(removedEvent, "selectedEvents");
+    }
+
+    addSelectedSupport(addedSupport) {
+        this.addSelectedCard(addedSupport, "selectedSupports");
+    }
+
+    removeSelectedSupport(removedSupport) {
+        this.removeSelectedCard(removedSupport, "selectedSupports");
+    }
+
     render() {
         return(
             <div className="deck-builder">
@@ -119,11 +210,38 @@ class Deckbuilder extends Component {
                         selectedCharacters={this.state.selectedCharacters}
                         pointTotal={this.state.pointTotal}
                         currentAffiliation={this.state.currentAffiliation} />
+                    <UpgradePicker
+                        upgrades={this.state.cards.upgrades}
+                        addSelectedUpgrade={this.addSelectedUpgrade}
+                        selectedUpgrades={this.state.selectedUpgrades}
+                        currentAffiliation={this.state.currentAffiliation}
+                        currentFactions={this.state.currentFactions} />
+                    <EventPicker
+                        events={this.state.cards.events}
+                        addSelectedEvent={this.addSelectedEvent}
+                        selectedEvents={this.state.selectedEvents}
+                        currentAffiliation={this.state.currentAffiliation}
+                        currentFactions={this.state.currentFactions} />
+                    <SupportPicker
+                        supports={this.state.cards.supports}
+                        addSelectedSupport={this.addSelectedSupport}
+                        selectedSupports={this.state.selectedSupports}
+                        currentAffiliation={this.state.currentAffiliation}
+                        currentFactions={this.state.currentFactions} />
                 </div>
                 <BuilderBar
                     selectedCharacters={this.state.selectedCharacters}
                     setEliteStatus={this.setEliteStatus}
-                    removeSelectedCharacter={this.removeSelectedCharacter} />
+                    removeSelectedCharacter={this.removeSelectedCharacter}
+                    selectedUpgrades={this.state.selectedUpgrades}
+                    addSelectedUpgrade={this.addSelectedUpgrade}
+                    removeSelectedUpgrade={this.removeSelectedUpgrade}
+                    selectedEvents={this.state.selectedEvents}
+                    addSelectedEvent={this.addSelectedEvent}
+                    removeSelectedEvent={this.removeSelectedEvent}
+                    selectedSupports={this.state.selectedSupports}
+                    addSelectedSupport={this.addSelectedSupport}
+                    removeSelectedSupport={this.removeSelectedSupport} />
             </div>
         )
     }

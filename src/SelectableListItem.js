@@ -18,8 +18,7 @@ class SelectableListItem extends Component {
     }
 
     _updateSelected() {
-        // this.unfollowMouse();
-        console.log(this.props.card)
+        this.unfollowMouse();
         this.props.updateSelected(this.props.card);
     }
 
