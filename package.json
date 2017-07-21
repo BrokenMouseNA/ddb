@@ -10,7 +10,7 @@
     "gh-pages": "^1.0.0",
     "react-scripts": "1.0.10"
   },
-  "homepage": "https://brettgrigsby.github.io/dbb",
+  "homepage": "https://brettgrigsby.github.io/ddb",
   "scripts": {
     "start": "PORT=7000 react-scripts start",
     "build": "react-scripts build",
