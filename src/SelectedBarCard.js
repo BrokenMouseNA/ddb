@@ -6,9 +6,9 @@ class SelectedBarCard extends Component {
         super(props);
         this.removeSelectedCard = this.removeSelectedCard.bind(this);
         this.addSelectedCard = this.addSelectedCard.bind(this);
-        // this.showFullArt = this.showFullArt.bind(this);
-        // this.followMouse = this.followMouse.bind(this);
-        // this.unfollowMouse = this.unfollowMouse.bind(this);
+        this.showFullArt = this.showFullArt.bind(this);
+        this.followMouse = this.followMouse.bind(this);
+        this.unfollowMouse = this.unfollowMouse.bind(this);
         this.state = {
             fullArtDisplay: 'none',
             x: null,
@@ -26,26 +26,26 @@ class SelectedBarCard extends Component {
         }
     }
 
-    // followMouse() {
-    //     document.addEventListener('mousemove', this.showFullArt);
-    // }
+    followMouse() {
+        document.addEventListener('mousemove', this.showFullArt);
+    }
 
-    // unfollowMouse() {
-    //     this.setState({
-    //         fullArtDisplay: 'none',
-    //         x: null,
-    //         y: null
-    //     })
-    //     document.removeEventListener('mousemove', this.showFullArt);
-    // }
+    unfollowMouse() {
+        this.setState({
+            fullArtDisplay: 'none',
+            x: null,
+            y: null
+        })
+        document.removeEventListener('mousemove', this.showFullArt);
+    }
 
-    // showFullArt(e) {
-    //     this.setState({
-    //         fullArtDisplay: 'inline',
-    //         x: e.pageX,
-    //         y: e.pageY - 175
-    //     });
-    // }
+    showFullArt(e) {
+        this.setState({
+            fullArtDisplay: 'inline',
+            x: -270,
+            y: e.pageY - 150
+        });
+    }
 
     renderAddButton() {
         if(this.props.card.countInDeck === 2) {
@@ -65,7 +65,9 @@ class SelectedBarCard extends Component {
 
     render() {
         return(
-            <div className="selected-bar-card" >
+            <div className="selected-bar-card"
+                onMouseEnter={this.followMouse}
+                onMouseLeave={this.unfollowMouse} >
                 <div className="selected-card-image-container">
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt=""/>
                 </div>
@@ -79,7 +81,7 @@ class SelectedBarCard extends Component {
                 </div>
                 <div 
                     className="item-full-art"
-                    style={{display: this.state.fullArtDisplay, top: this.state.y, left: this.state.x}}>
+                    style={{display: this.state.fullArtDisplay, positon: 'absolute', top: this.state.y, left: this.state.x}}>
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt="full card art"/>
                 </div>
             </div>

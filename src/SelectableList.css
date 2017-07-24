@@ -3,15 +3,22 @@
     flex-wrap: wrap;
 }
 
-.selectable-list-item{
+.selectable-list-item {
     display: flex;
-    width: 400px;
-    height: 100px;
+    width: 100%;
+    height: 125px;
     margin: 5px;
     border-radius: 10px;
     border: 1px solid black;
     overflow: hidden;
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .selectable-list-item {
+        width: 400px;
+        height: 100px;
+    }
 }
 
 .list-item-image-container {

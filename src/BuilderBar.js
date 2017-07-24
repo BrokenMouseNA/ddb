@@ -5,9 +5,18 @@ import BuilderBarEvents from './BuilderBarEvents.js';
 import BuilderBarSupports from './BuilderBarSupports.js';
 
 class BuilderBar extends Component {
+
+    barClasses() {
+        let classes = ["builder-bar"];
+        if(this.props.show) {
+            classes.push("show-bar");
+        }
+        return classes.join(" ");
+    }
+
     render() {
         return(
-            <div className="builder-bar">
+            <div className={this.barClasses()}>
                 <div className="builder-bar-header padded-div">
                     Destiny Deck Builder
                 </div>

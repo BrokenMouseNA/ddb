@@ -15,6 +15,7 @@ class Deckbuilder extends Component {
             currentFactions: [],
             affiliationRestricted: true,
             factionRestricted: true,
+            showBuilderBar: false,
             cards: {
                 characters: [],
                 events: [],
@@ -37,6 +38,7 @@ class Deckbuilder extends Component {
         this.removeSelectedEvent = this.removeSelectedEvent.bind(this);
         this.addSelectedSupport = this.addSelectedSupport.bind(this);
         this.removeSelectedSupport = this.removeSelectedSupport.bind(this);
+        this.toggleBuilderBar = this.toggleBuilderBar.bind(this);
     }
 
     componentDidMount() {
@@ -200,6 +202,10 @@ class Deckbuilder extends Component {
         this.removeSelectedCard(removedSupport, "selectedSupports");
     }
 
+    toggleBuilderBar() {
+        this.setState({showBuilderBar: !this.state.showBuilderBar});
+    }
+
     render() {
         return(
             <div className="deck-builder">
@@ -241,7 +247,11 @@ class Deckbuilder extends Component {
                     removeSelectedEvent={this.removeSelectedEvent}
                     selectedSupports={this.state.selectedSupports}
                     addSelectedSupport={this.addSelectedSupport}
-                    removeSelectedSupport={this.removeSelectedSupport} />
+                    removeSelectedSupport={this.removeSelectedSupport}
+                    show={this.state.showBuilderBar} />
+                <div className="show-deck-button" onClick={this.toggleBuilderBar}>
+                    D
+                </div>
             </div>
         )
     }
