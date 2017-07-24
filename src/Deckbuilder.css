@@ -12,6 +12,7 @@
 .picker-list-container {
     height: 500px;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .hidden-list {

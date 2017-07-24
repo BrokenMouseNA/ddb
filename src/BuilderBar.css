@@ -1,6 +1,7 @@
 .builder-bar {
     background-color: #eeeeee;
     display: none;
+    overflow: scroll;
 }
 
 @media (min-width: 768px) {
@@ -22,7 +23,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: scroll;
 }
 
 .builder-bar-header {

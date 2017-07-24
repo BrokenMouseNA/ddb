@@ -34,6 +34,7 @@
     align-items: center;
     justify-content: space-around;
     flex-shrink: 0;
+    height: 100%;
 }
 
 .faction-container.blue {
