@@ -17,8 +17,8 @@
 }
 
 .selected-card-image-container > img {
-    width: 120%;
-    transform: translateY(-20px) translateX(-10px);
+    width: 140%;
+    transform: translateY(-12px) translateX(-25px);
 }
 
 .selected-card-faction-container {
@@ -58,13 +58,21 @@
 }
 
 .selected-card-button {
-    width: 20px;
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     border-left: 1px solid black;
     font-weight: bold;
+    font-size: 25px;
+}
+
+@media (min-width: 768px) {
+    .selected-card-button {
+        width: 20px;
+        font-size: 18px;
+    }
 }
 
 .selected-card-button.add-button {
@@ -75,16 +83,4 @@
 .selected-card-button.removal-button {
     background-color: rgba(173, 26, 54, 0.15);
     cursor: pointer;
-}
-
-.character-removal-button {
-    width: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border-left: 1px solid black;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: rgba(173, 26, 54, 0.15);
 }

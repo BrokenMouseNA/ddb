@@ -31,8 +31,12 @@
 
 .list-item-image-container > img {
     width: 160%;
-    transform: translateX(-35px) translateY(-35px);
+    transform: translateX(-33px) translateY(-15px);
     z-index: 0;
+}
+
+.list-item-image-container.character > img {
+    transform: translateX(-35px) translateY(-35px);
 }
 
 .list-item-text-container {
@@ -86,7 +90,7 @@
 .item-full-art {
     position: fixed;
     animation: fadein 2s;
-    box-shadow: 2px 2px 20px 5px #000000;
+    box-shadow: 0px 2px 5px #666;
     border-radius: 15px;
     overflow: hidden;
     height: 350px;

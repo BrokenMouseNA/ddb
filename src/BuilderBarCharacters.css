@@ -3,10 +3,16 @@
 }
 
 .selected-bar-character {
-    height: 50px;
+    height: 70px;
     display: flex;
     border-top: 1px solid #000000;
     background-color: white;
+}
+
+@media (min-width: 768px) {
+    .selected-bar-character {
+        height: 50px;
+    }
 }
 
 .selected-bar-character:last-child {
@@ -21,8 +27,15 @@
 }
 
 .character-image-container > img {
-    width: 130%;
-    transform: translateY(-25px) translateX(-20px);
+    width: 140%;
+    transform: translateY(-21px) translateX(-18px);
+}
+
+@media (min-width: 768px) {
+    .character-image-container > img {
+        width: 130%;
+        transform: translateY(-25px) translateX(-20px);
+    }
 }
 
 .faction-container {
@@ -82,7 +95,7 @@
 }
 
 .character-removal-button {
-    width: 20px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,4 +104,12 @@
     cursor: pointer;
     font-weight: bold;
     background-color: rgba(173, 26, 54, 0.15);
+    font-size: 30px;
+}
+
+@media (min-width: 768px) {
+    .character-removal-button {
+        width: 20px;
+        font-size: 18px;
+    }
 }

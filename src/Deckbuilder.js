@@ -255,7 +255,7 @@ class Deckbuilder extends Component {
                     show={this.state.showBuilderBar}
                     desktop={this.props.desktop} />
                 <div className="show-deck-button" onClick={this.toggleBuilderBar}>
-                    D
+                    <i className="material-icons">swap_horiz</i>
                 </div>
             </div>
         )

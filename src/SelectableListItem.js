@@ -72,6 +72,14 @@ class SelectableListItem extends Component {
         console.log(this.props.card);
     }
 
+    imageClasses() {
+        let imageClasses = ["list-item-image-container"];
+        if(this.props.card.type_code === "character") {
+            imageClasses.push("character");
+        }
+        return imageClasses.join(" ");
+    }
+
     render() {
         let inputProps = {};
         if(this.props.desktop) {
@@ -83,7 +91,7 @@ class SelectableListItem extends Component {
                 className="selectable-list-item"
                 onClick={this._updateSelected}
                 {...inputProps} >
-                <div className="list-item-image-container">
+                <div className={this.imageClasses()}>
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt=""/>
                 </div>
                 <div className={"faction-container " + this.props.card.faction_code}>
