@@ -61,16 +61,25 @@ class CharacterPicker extends Component {
         return baseClasses.join(" ");
     }
 
+    openArrow() {
+        if(this.state.showList) {
+            return "v";
+        } else {
+            return ">";
+        }
+    }
+
     render() {
         return(
             <div className="character-picker">
-                <h2 onClick={this.toggleList}>Characters</h2>
+                <h2 onClick={this.toggleList}>Characters {this.openArrow()}</h2>
                 <div className={this.listClasses()}>
                     <SelectableList 
                         items={this.sortedAvailableCharacters()}
                         updateSelected={this._addSelectedCharacter}
                         textFilter={""}
-                        availablePoints={this.availablePoints()} />
+                        availablePoints={this.availablePoints()}
+                        desktop={this.props.desktop} />
                 </div>
             </div>
         )

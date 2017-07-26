@@ -27,7 +27,8 @@ class BuilderBarCharacters extends Component {
                                 selectedIndex={index}
                                 character={char}
                                 setEliteStatus={this.props.setEliteStatus}
-                                removeSelectedCharacter={this.props.removeSelectedCharacter} />
+                                removeSelectedCharacter={this.props.removeSelectedCharacter}
+                                desktop={this.props.desktop} />
                         )
                     })}
                 </div>

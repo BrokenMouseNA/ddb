@@ -215,25 +215,29 @@ class Deckbuilder extends Component {
                         addSelectedCharacter={this.addSelectedCharacter}
                         selectedCharacters={this.state.selectedCharacters}
                         pointTotal={this.state.pointTotal}
-                        currentAffiliation={this.state.currentAffiliation} />
+                        currentAffiliation={this.state.currentAffiliation}
+                        desktop={this.props.desktop} />
                     <UpgradePicker
                         upgrades={this.state.cards.upgrades}
                         addSelectedUpgrade={this.addSelectedUpgrade}
                         selectedUpgrades={this.state.selectedUpgrades}
                         currentAffiliation={this.state.currentAffiliation}
-                        currentFactions={this.state.currentFactions} />
+                        currentFactions={this.state.currentFactions}
+                        desktop={this.props.desktop} />
                     <EventPicker
                         events={this.state.cards.events}
                         addSelectedEvent={this.addSelectedEvent}
                         selectedEvents={this.state.selectedEvents}
                         currentAffiliation={this.state.currentAffiliation}
-                        currentFactions={this.state.currentFactions} />
+                        currentFactions={this.state.currentFactions}
+                        desktop={this.props.desktop} />
                     <SupportPicker
                         supports={this.state.cards.supports}
                         addSelectedSupport={this.addSelectedSupport}
                         selectedSupports={this.state.selectedSupports}
                         currentAffiliation={this.state.currentAffiliation}
-                        currentFactions={this.state.currentFactions} />
+                        currentFactions={this.state.currentFactions}
+                        desktop={this.props.desktop} />
                 </div>
                 <BuilderBar
                     selectedCharacters={this.state.selectedCharacters}
@@ -248,7 +252,8 @@ class Deckbuilder extends Component {
                     selectedSupports={this.state.selectedSupports}
                     addSelectedSupport={this.addSelectedSupport}
                     removeSelectedSupport={this.removeSelectedSupport}
-                    show={this.state.showBuilderBar} />
+                    show={this.state.showBuilderBar}
+                    desktop={this.props.desktop} />
                 <div className="show-deck-button" onClick={this.toggleBuilderBar}>
                     D
                 </div>

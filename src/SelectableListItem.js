@@ -73,12 +73,16 @@ class SelectableListItem extends Component {
     }
 
     render() {
+        let inputProps = {};
+        if(this.props.desktop) {
+            inputProps.onMouseEnter = this.followMouse;
+            inputProps.onMouseLeave = this.unfollowMouse;
+        }
         return(
             <div 
                 className="selectable-list-item"
                 onClick={this._updateSelected}
-                onMouseEnter={this.followMouse}
-                onMouseLeave={this.unfollowMouse} >
+                {...inputProps} >
                 <div className="list-item-image-container">
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt=""/>
                 </div>

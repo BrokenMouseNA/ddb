@@ -42,7 +42,7 @@ class SelectedBarCard extends Component {
     showFullArt(e) {
         this.setState({
             fullArtDisplay: 'inline',
-            x: -270,
+            x: e.pageX - 270,
             y: e.pageY - 150
         });
     }
@@ -64,10 +64,14 @@ class SelectedBarCard extends Component {
     }
 
     render() {
+        let inputProps = {};
+        if(this.props.desktop) {
+            inputProps.onMouseEnter = this.followMouse;
+            inputProps.onMouseLeave = this.unfollowMouse;
+        }
         return(
             <div className="selected-bar-card"
-                onMouseEnter={this.followMouse}
-                onMouseLeave={this.unfollowMouse} >
+                {...inputProps} >
                 <div className="selected-card-image-container">
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt=""/>
                 </div>
@@ -81,7 +85,7 @@ class SelectedBarCard extends Component {
                 </div>
                 <div 
                     className="item-full-art"
-                    style={{display: this.state.fullArtDisplay, positon: 'absolute', top: this.state.y, left: this.state.x}}>
+                    style={{display: this.state.fullArtDisplay, top: this.state.y, left: this.state.x}}>
                     <img src={this.props.card.imagesrc || DefaultArtSrc} alt="full card art"/>
                 </div>
             </div>

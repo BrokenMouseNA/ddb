@@ -26,7 +26,8 @@ class BuilderBarSupports extends Component {
                                 selectedIndex={index}
                                 card={card}
                                 addSelectedCard={this.props.addSelectedSupport}
-                                removeSelectedCard={this.props.removeSelectedSupport} />
+                                removeSelectedCard={this.props.removeSelectedSupport}
+                                desktop={this.props.desktop} />
                         )
                     })}
                 </div>

@@ -54,7 +54,8 @@ class UpgradePicker extends Component {
                     <SelectableList 
                         items={this.availableUpgrades()}
                         updateSelected={this.props.addSelectedUpgrade}
-                        textFilter={""} />
+                        textFilter={""}
+                        desktop={this.props.desktop} />
                 </div>
             </div>
         );

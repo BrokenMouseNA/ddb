@@ -38,7 +38,8 @@ class SelectableList extends Component {
                             key={card.code}
                             card={card}
                             updateSelected={this.props.updateSelected}
-                            availablePoints={this.props.availablePoints} />
+                            availablePoints={this.props.availablePoints}
+                            desktop={this.props.desktop} />
                     )
                 })}
             </div>

@@ -54,7 +54,8 @@ class EventPicker extends Component {
                     <SelectableList 
                         items={this.availableEvents()}
                         updateSelected={this.props.addSelectedEvent}
-                        textFilter={""} />
+                        textFilter={""}
+                        desktop={this.props.desktop} />
                 </div>
             </div>
         );

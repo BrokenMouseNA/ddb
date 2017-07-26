@@ -84,7 +84,7 @@
 }
 
 .item-full-art {
-    position: absolute;
+    position: fixed;
     animation: fadein 2s;
     box-shadow: 2px 2px 20px 5px #000000;
     border-radius: 15px;

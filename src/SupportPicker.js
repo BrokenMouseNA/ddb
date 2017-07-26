@@ -54,7 +54,8 @@ class SupportPicker extends Component {
                     <SelectableList 
                         items={this.availableSupports()}
                         updateSelected={this.props.addSelectedSupport}
-                        textFilter={""} />
+                        textFilter={""}
+                        desktop={this.props.desktop} />
                 </div>
             </div>
         );

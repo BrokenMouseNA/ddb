@@ -26,7 +26,8 @@ class BuilderBarEvents extends Component {
                                 selectedIndex={index}
                                 card={card}
                                 addSelectedCard={this.props.addSelectedEvent}
-                                removeSelectedCard={this.props.removeSelectedEvent} />
+                                removeSelectedCard={this.props.removeSelectedEvent}
+                                desktop={this.props.desktop} />
                         )
                     })}
                 </div>

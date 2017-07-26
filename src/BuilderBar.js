@@ -24,19 +24,23 @@ class BuilderBar extends Component {
                     <BuilderBarCharacters
                         selectedCharacters={this.props.selectedCharacters}
                         setEliteStatus={this.props.setEliteStatus}
-                        removeSelectedCharacter={this.props.removeSelectedCharacter} />
+                        removeSelectedCharacter={this.props.removeSelectedCharacter}
+                        desktop={this.props.desktop} />
                     <BuilderBarUpgrades 
                         selectedUpgrades={this.props.selectedUpgrades}
                         addSelectedUpgrade={this.props.addSelectedUpgrade}
-                        removeSelectedUpgrade={this.props.removeSelectedUpgrade} />
+                        removeSelectedUpgrade={this.props.removeSelectedUpgrade}
+                        desktop={this.props.desktop} />
                     <BuilderBarEvents
                         selectedEvents={this.props.selectedEvents}
                         addSelectedEvent={this.props.addSelectedEvent}
-                        removeSelectedEvent={this.props.removeSelectedEvent} />
+                        removeSelectedEvent={this.props.removeSelectedEvent}
+                        desktop={this.props.desktop} />
                     <BuilderBarSupports
                         selectedSupports={this.props.selectedSupports}
                         addSelectedSupport={this.props.addSelectedSupport}
-                        removeSelectedSupport={this.props.removeSelectedSupport} />
+                        removeSelectedSupport={this.props.removeSelectedSupport}
+                        desktop={this.props.desktop} />
                 </div>
             </div>
         )

@@ -26,7 +26,8 @@ class BuilderBarUpgrades extends Component {
                                 selectedIndex={index}
                                 card={card}
                                 addSelectedCard={this.props.addSelectedUpgrade}
-                                removeSelectedCard={this.props.removeSelectedUpgrade} />
+                                removeSelectedCard={this.props.removeSelectedUpgrade}
+                                desktop={this.props.desktop} />
                         )
                     })}
                 </div>

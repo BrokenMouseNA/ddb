@@ -7,6 +7,9 @@ class SelectedBarCharacter extends Component {
         this.promoteCharacter = this.promoteCharacter.bind(this);
         this.demoteCharacter = this.demoteCharacter.bind(this);
         this.removeSelectedCharacter = this.removeSelectedCharacter.bind(this);
+        this.followMouse = this.followMouse.bind(this);
+        this.unfollowMouse = this.unfollowMouse.bind(this);
+        this.showFullArt = this.showFullArt.bind(this);
         this.state = {
             fullArtDisplay: 'none',
             x: null,
@@ -42,9 +45,36 @@ class SelectedBarCharacter extends Component {
         this.props.removeSelectedCharacter(this.props.selectedIndex);
     }
 
+    followMouse() {
+        document.addEventListener('mousemove', this.showFullArt);
+    }
+
+    unfollowMouse() {
+        this.setState({
+            fullArtDisplay: 'none',
+            x: null,
+            y: null
+        })
+        document.removeEventListener('mousemove', this.showFullArt);
+    }
+
+    showFullArt(e) {
+        this.setState({
+            fullArtDisplay: 'inline',
+            x: e.pageX - 270,
+            y: e.pageY - 150
+        });
+    }
+
     render() {
+        let inputProps = {};
+        if(this.props.desktop) {
+            inputProps.onMouseEnter = this.followMouse;
+            inputProps.onMouseLeave = this.unfollowMouse;
+        }
         return(
-            <div className="selected-bar-character">
+            <div className="selected-bar-character"
+                {...inputProps}>
                 <div className="character-image-container">
                     <img src={this.props.character.imagesrc || DefaultArtSrc} alt=""/>
                 </div>
@@ -59,6 +89,11 @@ class SelectedBarCharacter extends Component {
                 </div>
                 <div className="character-removal-button" onClick={this.removeSelectedCharacter}>
                     <span>-</span>
+                </div>
+                <div 
+                    className="item-full-art"
+                    style={{display: this.state.fullArtDisplay, top: this.state.y, left: this.state.x}}>
+                    <img src={this.props.character.imagesrc || DefaultArtSrc} alt="full card art"/>
                 </div>
             </div>
         )

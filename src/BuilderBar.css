@@ -2,6 +2,7 @@
     background-color: #eeeeee;
     display: none;
     overflow: scroll;
+    
 }
 
 @media (min-width: 768px) {
@@ -33,6 +34,7 @@
 
 .builder-bar-sections {
     overflow-y: scroll;
+    padding-bottom: 200px;
 }
 
 .builder-bar-section-title {
