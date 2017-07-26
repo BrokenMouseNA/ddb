@@ -49,7 +49,11 @@ class SupportPicker extends Component {
     render() {
         return(
             <div className="support-picker">
-                <h2 onClick={this.toggleList}>Supports</h2>
+                <div 
+                    onClick={this.toggleList}
+                    className={this.state.showList ? "list-toggle-button active" : "list-toggle-button"}>
+                    <h2>Supports</h2>
+                </div>
                 <div className={this.listClasses()}>
                     <SelectableList 
                         items={this.availableSupports()}

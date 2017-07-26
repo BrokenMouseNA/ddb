@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+    import React, { Component } from 'react';
 import SelectableList from './SelectableList.js';
 
 class CharacterPicker extends Component {
@@ -8,7 +8,7 @@ class CharacterPicker extends Component {
         this._addSelectedCharacter = this._addSelectedCharacter.bind(this);
         this.toggleList = this.toggleList.bind(this);
         this.state = {
-            showList: true
+            showList: false
         };
     }
 
@@ -55,7 +55,7 @@ class CharacterPicker extends Component {
 
     listClasses() {
         let baseClasses = ["character-picker-list-container", "picker-list-container"];
-        if(!this.state.showList || this.availableCharacters().length === 0) {
+        if(!this.state.showList) {
             baseClasses.push("hidden-list")
         }
         return baseClasses.join(" ");
@@ -72,7 +72,11 @@ class CharacterPicker extends Component {
     render() {
         return(
             <div className="character-picker">
-                <h2 onClick={this.toggleList}>Characters {this.openArrow()}</h2>
+                <div 
+                    onClick={this.toggleList}
+                    className={this.state.showList ? "list-toggle-button active" : "list-toggle-button"}>
+                    <h2>Characters</h2>
+                </div>
                 <div className={this.listClasses()}>
                     <SelectableList 
                         items={this.sortedAvailableCharacters()}
@@ -80,7 +84,14 @@ class CharacterPicker extends Component {
                         textFilter={""}
                         availablePoints={this.availablePoints()}
                         desktop={this.props.desktop} />
+                    <div
+                        className="character-list-empty-state" 
+                        style={{display: this.sortedAvailableCharacters().length ? "none" : "initial"}}>
+                        <p>No Characters Available at Remaining Point Value</p>
+                    </div>
                 </div>
+                    
+                
             </div>
         )
     }

@@ -18,7 +18,7 @@ class BuilderBar extends Component {
         return(
             <div className={this.barClasses()}>
                 <div className="builder-bar-header padded-div">
-                    Destiny Deck Builder
+                    Current Deck
                 </div>
                 <div className="builder-bar-sections">
                     <BuilderBarCharacters

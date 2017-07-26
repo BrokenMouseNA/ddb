@@ -49,7 +49,11 @@ class EventPicker extends Component {
     render() {
         return(
             <div className="event-picker">
-                <h2 onClick={this.toggleList}>Events</h2>
+                <div 
+                    onClick={this.toggleList}
+                    className={this.state.showList ? "list-toggle-button active" : "list-toggle-button"}>
+                    <h2>Events</h2>
+                </div>
                 <div className={this.listClasses()}>
                     <SelectableList 
                         items={this.availableEvents()}

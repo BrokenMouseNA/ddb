@@ -3,6 +3,10 @@
     justify-content: space-between;
 }
 
+.deck-builder-content {
+    width: 100%;
+}
+
 @media (min-width: 768px) {
     .deck-builder-content {
         width: calc(100% - 320px);
@@ -17,6 +21,17 @@
 
 .hidden-list {
     display: none;
+}
+
+.character-list-empty-state {
+    text-align: center;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .character-list-empty-state {
+        text-align: left;
+    }
 }
 
 .show-deck-button {
@@ -38,4 +53,26 @@
     .show-deck-button {
          display: none; 
     }
+}
+
+.list-toggle-button {
+    cursor: pointer;
+    background-color: rgba(37, 81, 154, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgb(37, 81, 154);
+    width: 100%;
+    margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+    .list-toggle-button {
+        width: 200px;
+    }
+}
+
+.list-toggle-button.active {
+    background-color: rgba(37, 81, 154, 0.4);
 }
